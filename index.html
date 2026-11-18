@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Balles Tech | Energia Solar em Sapezal e região – MT</title>
 <meta name="description" content="Energia solar para casas, comércios, indústrias e propriedades rurais em Sapezal e região (MT). Simule sua economia e veja a energia funcionando na sua casa.">
-<meta name="theme-color" content="#05080E">
+<meta name="theme-color" content="#040D1F">
 <link rel="canonical" href="https://ballestech.com.br/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
@@ -22,10 +22,10 @@
 </script>
 <style>
 :root{
-  --bg:#05080E; --bg-2:#0A101B; --card:#0E1624; --card-2:#121C2E; --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
+  --bg:#040D1F; --bg-2:#06142C; --card:#0A1A36; --card-2:#0E2145; --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
   --ink:#F3F6FB; --muted:#9AA8BF; --dim:#66748C;
-  --volt:#D4F53C; --volt-2:#B8E01A; --volt-ink:#0B1200; --volt-glow:rgba(212,245,60,.45);
-  --blue:#3B8BFF; --blue-glow:rgba(59,139,255,.45);
+  --volt:#FFC21A; --volt-2:#F5A800; --volt-ink:#1A1300; --volt-glow:rgba(255,194,26,.45);
+  --blue:#008CEF; --blue-glow:rgba(0,140,239,.5);
   --amber:#FFB020;
   --f-title:'Sora',system-ui,sans-serif; --f-text:'Inter',system-ui,sans-serif;
   --r-sm:12px; --r-md:18px; --r-lg:26px; --r-pill:999px;
@@ -51,15 +51,15 @@ section{padding:var(--pad-sec) 0;position:relative}
 /* Botões */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:var(--r-pill);font-weight:600;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s;font-family:inherit}
 .btn svg{width:20px;height:20px;flex:none}
-.btn-volt{background:var(--volt);color:var(--volt-ink);box-shadow:0 0 0 1px rgba(212,245,60,.4),0 10px 40px -6px var(--volt-glow)}
-.btn-volt:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(212,245,60,.6),0 14px 50px -4px var(--volt-glow)}
+.btn-volt{background:var(--volt);color:var(--volt-ink);box-shadow:0 0 0 1px rgba(255,194,26,.4),0 10px 40px -6px var(--volt-glow)}
+.btn-volt:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,194,26,.6),0 14px 50px -4px var(--volt-glow)}
 .btn-ghost{background:rgba(255,255,255,.04);color:var(--ink);border:1px solid var(--line-2)}
 .btn-ghost:hover{border-color:rgba(255,255,255,.35);transform:translateY(-2px)}
 .btn:focus-visible,a:focus-visible,input:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
 /* Header */
 .hdr{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-.hdr.solid{background:rgba(5,8,14,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.hdr.solid{background:rgba(4,13,31,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
 .hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo img{height:40px;width:auto}
 .nav{display:none;gap:28px}
@@ -76,13 +76,13 @@ section{padding:var(--pad-sec) 0;position:relative}
 .beam.b1{stroke:url(#gVolt);stroke-width:2.2;stroke-dasharray:240 1400;animation:flow 7s linear infinite}
 .beam.b2{stroke:url(#gVolt);stroke-width:1.2;stroke-dasharray:160 1400;animation:flow 9s linear infinite -3s;opacity:.7}
 .beam.b3{stroke:url(#gBlue);stroke-width:1.6;stroke-dasharray:200 1400;animation:flow 11s linear infinite -5s;opacity:.8}
-.beam.base{stroke:rgba(212,245,60,.07);stroke-width:1}
+.beam.base{stroke:rgba(255,194,26,.07);stroke-width:1}
 @keyframes flow{from{stroke-dashoffset:1640}to{stroke-dashoffset:0}}
 
 /* Hero */
 .hero{padding:112px 0 56px;overflow:hidden;isolation:isolate}
-.hero::before{content:"";position:absolute;z-index:-2;width:900px;height:700px;right:-260px;top:-300px;background:radial-gradient(closest-side,rgba(212,245,60,.18),transparent 70%)}
-.hero::after{content:"";position:absolute;z-index:-2;width:700px;height:600px;left:-300px;bottom:-200px;background:radial-gradient(closest-side,rgba(59,139,255,.14),transparent 70%)}
+.hero::before{content:"";position:absolute;z-index:-2;width:900px;height:700px;right:-260px;top:-300px;background:radial-gradient(closest-side,rgba(255,194,26,.18),transparent 70%)}
+.hero::after{content:"";position:absolute;z-index:-2;width:700px;height:600px;left:-300px;bottom:-200px;background:radial-gradient(closest-side,rgba(0,140,239,.14),transparent 70%)}
 .hero-grid{display:grid;gap:40px;align-items:center}
 @media(min-width:980px){.hero{padding:140px 0 96px}.hero-grid{grid-template-columns:1fr 1fr;gap:56px}}
 .pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:var(--r-pill);background:rgba(255,255,255,.04);border:1px solid var(--line-2);font-size:13.5px;color:#D3DCEA}
@@ -95,7 +95,7 @@ section{padding:var(--pad-sec) 0;position:relative}
 
 /* Simulador (no hero) */
 .sim{background:linear-gradient(180deg,rgba(18,28,46,.85),rgba(10,16,27,.9));border:1px solid var(--line-2);border-radius:28px;padding:24px 20px;position:relative;box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
-.sim::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(140deg,rgba(212,245,60,.7),transparent 35%,transparent 65%,rgba(59,139,255,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.sim::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(140deg,rgba(255,194,26,.7),transparent 35%,transparent 65%,rgba(0,140,239,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 @media(min-width:600px){.sim{padding:32px}}
 .sim-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .sim-top label{font-size:14px;color:var(--muted)}
@@ -160,7 +160,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 @media(min-width:720px){.steps{grid-template-columns:repeat(4,1fr)}}
 .step{border:1px solid var(--line);background:var(--card);border-radius:var(--r-md);padding:22px;display:flex;gap:14px;align-items:flex-start}
 @media(min-width:720px){.step{flex-direction:column}}
-.step i{font-style:normal;font-family:var(--f-title);font-weight:700;font-size:14px;color:var(--volt);border:1px solid rgba(212,245,60,.35);border-radius:10px;padding:4px 9px;flex:none}
+.step i{font-style:normal;font-family:var(--f-title);font-weight:700;font-size:14px;color:var(--volt);border:1px solid rgba(255,194,26,.35);border-radius:10px;padding:4px 9px;flex:none}
 .step h3{font-size:17px;margin-bottom:4px}
 .step p{color:var(--muted);font-size:14.5px;line-height:1.5}
 
@@ -168,7 +168,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .svc{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 @media(min-width:900px){.svc{grid-template-columns:repeat(3,1fr);gap:14px}}
 .svc a{border:1px solid var(--line);background:var(--card);border-radius:var(--r-md);padding:18px;text-decoration:none;display:flex;flex-direction:column;gap:6px;transition:transform .25s var(--ease),border-color .25s,box-shadow .25s}
-.svc a:hover{transform:translateY(-3px);border-color:rgba(212,245,60,.45);box-shadow:0 10px 40px -12px var(--volt-glow)}
+.svc a:hover{transform:translateY(-3px);border-color:rgba(255,194,26,.45);box-shadow:0 10px 40px -12px var(--volt-glow)}
 .svc svg{width:26px;height:26px;color:var(--volt);margin-bottom:6px}
 .svc h3{font-size:16px}
 .svc p{font-size:13.5px;color:var(--muted);line-height:1.45}
@@ -230,8 +230,8 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <linearGradient id="gVolt" x1="0" x2="1"><stop offset="0" stop-color="#D4F53C" stop-opacity="0"/><stop offset=".5" stop-color="#E9FF7A"/><stop offset="1" stop-color="#D4F53C" stop-opacity="0"/></linearGradient>
-    <linearGradient id="gBlue" x1="0" x2="1"><stop offset="0" stop-color="#3B8BFF" stop-opacity="0"/><stop offset=".5" stop-color="#8CC0FF"/><stop offset="1" stop-color="#3B8BFF" stop-opacity="0"/></linearGradient>
+    <linearGradient id="gVolt" x1="0" x2="1"><stop offset="0" stop-color="#FFC21A" stop-opacity="0"/><stop offset=".5" stop-color="#FFE08A"/><stop offset="1" stop-color="#FFC21A" stop-opacity="0"/></linearGradient>
+    <linearGradient id="gBlue" x1="0" x2="1"><stop offset="0" stop-color="#008CEF" stop-opacity="0"/><stop offset=".5" stop-color="#7CC4FF"/><stop offset="1" stop-color="#008CEF" stop-opacity="0"/></linearGradient>
     <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
   </defs>
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.1-.1Z"/></symbol>
@@ -317,7 +317,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
             <title id="sceneTitle">Diagrama do fluxo de energia entre painéis, inversor, casa, bateria e rede</title>
             <defs>
               <radialGradient id="sunG"><stop offset="0" stop-color="#FFF6C2"/><stop offset=".45" stop-color="#FFD43B"/><stop offset="1" stop-color="#FFB020" stop-opacity="0"/></radialGradient>
-              <linearGradient id="skyDay" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14304F"/><stop offset="1" stop-color="#0E1624"/></linearGradient>
+              <linearGradient id="skyDay" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B2E63"/><stop offset="1" stop-color="#0A1A36"/></linearGradient>
             </defs>
             <rect id="sky" width="800" height="430" fill="url(#skyDay)"/>
             <g id="stars" fill="#fff" opacity="0">
@@ -327,7 +327,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
             <g id="sun"><circle r="46" fill="url(#sunG)"/><circle r="15" fill="#FFF3B0"/></g>
             <g id="moon" opacity="0"><circle r="13" fill="#DCE6F5"/><circle r="13" cx="6" cy="-4" fill="#0B1322"/></g>
             <!-- chão -->
-            <rect y="356" width="800" height="74" fill="#0A111D"/>
+            <rect y="356" width="800" height="74" fill="#061430"/>
             <line x1="0" y1="356" x2="800" y2="356" stroke="rgba(255,255,255,.08)"/>
 
             <!-- fios -->
@@ -336,9 +336,9 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
             <path class="wire" d="M410 330 L 410 380 L 250 380"/>
             <path class="wire" d="M432 330 L 432 392 L 680 392 L 680 260 L 640 260 L 640 250"/>
             <!-- fluxos -->
-            <path class="flowline" id="fPanel" stroke="#D4F53C" d="M300 210 L 300 300 L 380 300"/>
-            <path class="flowline" id="fHouse" stroke="#D4F53C" d="M440 300 L 520 300"/>
-            <path class="flowline" id="fBatt" stroke="#3B8BFF" d="M410 330 L 410 380 L 250 380"/>
+            <path class="flowline" id="fPanel" stroke="#FFC21A" d="M300 210 L 300 300 L 380 300"/>
+            <path class="flowline" id="fHouse" stroke="#FFC21A" d="M440 300 L 520 300"/>
+            <path class="flowline" id="fBatt" stroke="#008CEF" d="M410 330 L 410 380 L 250 380"/>
             <path class="flowline" id="fGrid" stroke="#FFB020" d="M432 330 L 432 392 L 680 392 L 680 260 L 640 260 L 640 250"/>
 
             <!-- telhado com painéis -->
@@ -353,12 +353,12 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
               <rect x="215" y="210" width="170" height="146" fill="#121C2E" stroke="rgba(255,255,255,.08)"/>
               <rect x="240" y="300" width="36" height="56" rx="3" fill="#0B1322"/>
               <text class="node-lbl" x="300" y="128" text-anchor="middle">Painéis</text>
-              <text class="node-val" id="tPanel" x="300" y="112" text-anchor="middle" fill="#D4F53C">0 kW</text>
+              <text class="node-val" id="tPanel" x="300" y="112" text-anchor="middle" fill="#FFC21A">0 kW</text>
             </g>
             <!-- inversor -->
             <g>
-              <rect x="380" y="278" width="60" height="52" rx="10" fill="#0E1624" stroke="#D4F53C" stroke-opacity=".5"/>
-              <path d="M396 304 q7 -10 14 0 t14 0" fill="none" stroke="#D4F53C" stroke-width="2"/>
+              <rect x="380" y="278" width="60" height="52" rx="10" fill="#0E1624" stroke="#FFC21A" stroke-opacity=".5"/>
+              <path d="M396 304 q7 -10 14 0 t14 0" fill="none" stroke="#FFC21A" stroke-width="2"/>
               <text class="node-lbl" x="410" y="268" text-anchor="middle">Inversor</text>
             </g>
             <!-- casa (consumo) -->
@@ -370,11 +370,11 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
             </g>
             <!-- bateria -->
             <g id="battG">
-              <rect x="190" y="360" width="60" height="40" rx="6" fill="#0E1624" stroke="#3B8BFF"/>
-              <rect x="250" y="372" width="5" height="16" rx="2" fill="#3B8BFF"/>
-              <rect id="battFill" x="195" y="365" width="25" height="30" rx="3" fill="#3B8BFF"/>
+              <rect x="190" y="360" width="60" height="40" rx="6" fill="#0E1624" stroke="#008CEF"/>
+              <rect x="250" y="372" width="5" height="16" rx="2" fill="#008CEF"/>
+              <rect id="battFill" x="195" y="365" width="25" height="30" rx="3" fill="#008CEF"/>
               <text class="node-lbl" x="120" y="378" text-anchor="middle">Bateria</text>
-              <text class="node-val" id="tBatt" x="120" y="396" text-anchor="middle" fill="#8CC0FF">50%</text>
+              <text class="node-val" id="tBatt" x="120" y="396" text-anchor="middle" fill="#7CC4FF">50%</text>
             </g>
             <!-- rede -->
             <g>
@@ -614,18 +614,18 @@ function drawDay(){
   const mt = ((h + 6) % 24) / 12; moonEl.setAttribute('transform', `translate(${60 + 680 * Math.min(1, mt)} ${300 - 4 * 170 * Math.min(1,mt) * (1 - Math.min(1,mt))})`);
   moonEl.style.opacity = day ? 0 : 1; starsEl.style.opacity = day ? 0 : .8;
   const light = prodAt(h);
-  sky.setAttribute('fill', `rgb(${Math.round(8 + 14*light)},${Math.round(14 + 40*light)},${Math.round(26 + 58*light)})`);
+  sky.setAttribute('fill', `rgb(${Math.round(5 + 6*light)},${Math.round(15 + 45*light)},${Math.round(36 + 90*light)})`);
   $('panels').setAttribute('fill', light > .05 ? `rgb(${30+40*light},${58+70*light},${110+60*light})` : '#1E3A6E');
   // fluxos
   setFlow('fPanel', r.p); setFlow('fHouse', r.l);
   setFlow('fBatt', r.toBatt, r.toBatt < 0);
   setFlow('fGrid', r.toGrid, r.toGrid < 0);
-  $('fGrid').setAttribute('stroke', r.toGrid >= 0 ? '#D4F53C' : '#FFB020');
-  $('fHouse').setAttribute('stroke', r.p >= r.l ? '#D4F53C' : '#8CC0FF');
+  $('fGrid').setAttribute('stroke', r.toGrid >= 0 ? '#FFC21A' : '#FF7A59');
+  $('fHouse').setAttribute('stroke', r.p >= r.l ? '#FFC21A' : '#7CC4FF');
   $('tPanel').textContent = nf(r.p) + ' kW';
   $('tHouse').textContent = nf(r.l) + ' kW';
   $('tGrid').textContent = Math.abs(r.toGrid) < .05 ? '—' : (r.toGrid > 0 ? '+' : '−') + nf(Math.abs(r.toGrid)) + ' kW';
-  $('tGrid').setAttribute('fill', r.toGrid > 0 ? '#D4F53C' : '#FFB020');
+  $('tGrid').setAttribute('fill', r.toGrid > 0 ? '#FFC21A' : '#FF7A59');
   $('battG').style.opacity = hasBatt.checked ? 1 : .25;
   const pct = hasBatt.checked ? r.soc / CONFIG.bateriaKwh : 0;
   $('battFill').setAttribute('width', Math.max(0, 50 * pct)); $('tBatt').textContent = hasBatt.checked ? Math.round(pct*100) + '%' : 'desligada';
