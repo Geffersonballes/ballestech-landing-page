@@ -1,0 +1,5 @@
+# Bloqueia arquivos internos do repositório
+<FilesMatch "\.(md|json)$">
+  Require all denied
+</FilesMatch>
+RedirectMatch 404 /\.git
