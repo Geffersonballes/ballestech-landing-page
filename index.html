@@ -133,6 +133,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 @media(max-width:640px){.node-lbl{font-size:21px}.node-val{font-size:24px}}
 .wire{fill:none;stroke:rgba(255,255,255,.08);stroke-width:4;stroke-linecap:round}
 .flowline{fill:none;stroke-width:4;stroke-linecap:round;stroke-dasharray:6 14;opacity:0;transition:opacity .5s}
+#lampGlow,#room,#bulb{transition:opacity .6s,fill .6s}
 .flowline.on{opacity:1;animation:dash var(--spd,1s) linear infinite}
 .flowline.rev{animation-direction:reverse}
 @keyframes dash{to{stroke-dashoffset:-40}}
@@ -318,6 +319,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
             <title id="sceneTitle">Diagrama do fluxo de energia entre painéis, inversor, casa, bateria e rede</title>
             <defs>
               <radialGradient id="sunG"><stop offset="0" stop-color="#FFF6C2"/><stop offset=".45" stop-color="#FFD43B"/><stop offset="1" stop-color="#FFB020" stop-opacity="0"/></radialGradient>
+              <radialGradient id="lampG"><stop offset="0" stop-color="#FFE7A0"/><stop offset=".35" stop-color="#FFC21A" stop-opacity=".75"/><stop offset="1" stop-color="#FFC21A" stop-opacity="0"/></radialGradient>
               <linearGradient id="skyDay" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B2E63"/><stop offset="1" stop-color="#0A1A36"/></linearGradient>
             </defs>
             <rect id="sky" width="800" height="430" fill="url(#skyDay)"/>
@@ -332,17 +334,16 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
             <line x1="0" y1="356" x2="800" y2="356" stroke="rgba(255,255,255,.08)"/>
 
             <!-- fios -->
-            <path class="wire" d="M300 210 L 300 300 L 380 300"/>
-            <path class="wire" d="M440 300 L 520 300"/>
-            <path class="wire" d="M410 330 L 410 380 L 250 380"/>
-            <path class="wire" d="M432 330 L 432 392 L 680 392 L 680 260 L 640 260 L 640 250"/>
+            <path class="wire" d="M352 190 L 430 190 L 430 262"/>
+            <path class="wire" d="M405 284 L 345 284 L 345 236 L 280 236 L 280 246"/>
+            <path class="wire" d="M445 306 L 445 333 L 476 333"/>
+            <path class="wire" d="M455 276 L 700 276"/>
             <!-- fluxos -->
-            <path class="flowline" id="fPanel" stroke="#FFC21A" d="M300 210 L 300 300 L 380 300"/>
-            <path class="flowline" id="fHouse" stroke="#FFC21A" d="M440 300 L 520 300"/>
-            <path class="flowline" id="fBatt" stroke="#008CEF" d="M410 330 L 410 380 L 250 380"/>
-            <path class="flowline" id="fGrid" stroke="#FFB020" d="M432 330 L 432 392 L 680 392 L 680 260 L 640 260 L 640 250"/>
+            <path class="flowline" id="fPanel" stroke="#FFC21A" d="M352 190 L 430 190 L 430 262"/>
+            <path class="flowline" id="fGrid" stroke="#FFC21A" d="M455 276 L 700 276"/>
+            <path class="flowline" id="fBatt" stroke="#008CEF" d="M445 306 L 445 333 L 476 333"/>
 
-            <!-- telhado com painéis -->
+            <!-- casa -->
             <g>
               <polygon points="200,210 300,140 400,210" fill="#1A2537"/>
               <g id="panels" fill="#1E3A6E" stroke="#5B8BD8" stroke-width="1">
@@ -352,37 +353,44 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
                 <polygon points="316,200 352,174 368,186 344,200"/>
               </g>
               <rect x="215" y="210" width="170" height="146" fill="#121C2E" stroke="rgba(255,255,255,.08)"/>
-              <rect x="240" y="300" width="36" height="56" rx="3" fill="#0B1322"/>
+              <!-- cômodo visto pela janela -->
+              <clipPath id="roomClip"><rect x="232" y="228" width="98" height="84" rx="6"/></clipPath>
+              <rect id="room" x="232" y="228" width="98" height="84" rx="6" fill="#0B1322"/>
+              <g clip-path="url(#roomClip)">
+                <circle id="lampGlow" cx="280" cy="256" r="62" fill="url(#lampG)" opacity="0"/>
+                <rect x="232" y="296" width="98" height="16" fill="#0E1A30"/>
+                <rect x="250" y="284" width="44" height="14" rx="3" fill="#1C2C4A"/>
+              </g>
+              <rect x="232" y="228" width="98" height="84" rx="6" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+              <circle id="bulb" cx="280" cy="252" r="6" fill="#3A4A66"/>
+              <rect x="348" y="300" width="28" height="56" rx="3" fill="#0B1322"/>
               <text class="node-lbl" x="300" y="128" text-anchor="middle">Painéis</text>
               <text class="node-val" id="tPanel" x="300" y="112" text-anchor="middle" fill="#FFC21A">0 kW</text>
+              <text class="node-lbl" x="128" y="288" text-anchor="middle">Sua casa</text>
+              <text class="node-val" id="tHouse" x="128" y="310" text-anchor="middle" fill="#fff">0 kW</text>
             </g>
             <!-- inversor -->
             <g>
-              <rect x="380" y="278" width="60" height="52" rx="10" fill="#0E1624" stroke="#FFC21A" stroke-opacity=".5"/>
-              <path d="M396 304 q7 -10 14 0 t14 0" fill="none" stroke="#FFC21A" stroke-width="2"/>
-              <text class="node-lbl" x="410" y="268" text-anchor="middle">Inversor</text>
-            </g>
-            <!-- casa (consumo) -->
-            <g>
-              <rect x="520" y="262" width="96" height="94" rx="12" fill="#0E1624" stroke="rgba(255,255,255,.15)"/>
-              <g id="bulb"><circle cx="568" cy="298" r="12" fill="#FFD43B" opacity=".25"/><circle cx="568" cy="298" r="6" fill="#FFD43B"/></g>
-              <text class="node-lbl" x="568" y="334" text-anchor="middle">Sua casa</text>
-              <text class="node-val" id="tHouse" x="568" y="252" text-anchor="middle" fill="#fff">0 kW</text>
+              <rect x="405" y="262" width="50" height="44" rx="9" fill="#0E1624" stroke="#FFC21A" stroke-opacity=".6"/>
+              <path d="M417 284 q6.5 -9 13 0 t13 0" fill="none" stroke="#FFC21A" stroke-width="2"/>
+              <text class="node-lbl" x="466" y="256">Inversor</text>
             </g>
             <!-- bateria -->
             <g id="battG">
-              <rect x="190" y="360" width="60" height="40" rx="6" fill="#0E1624" stroke="#008CEF"/>
-              <rect x="250" y="372" width="5" height="16" rx="2" fill="#008CEF"/>
-              <rect id="battFill" x="195" y="365" width="25" height="30" rx="3" fill="#008CEF"/>
-              <text class="node-lbl" x="120" y="378" text-anchor="middle">Bateria</text>
-              <text class="node-val" id="tBatt" x="120" y="396" text-anchor="middle" fill="#7CC4FF">50%</text>
+              <rect x="476" y="318" width="64" height="32" rx="6" fill="#0E1624" stroke="#008CEF"/>
+              <rect x="540" y="328" width="5" height="12" rx="2" fill="#008CEF"/>
+              <rect id="battFill" x="480" y="322" width="28" height="24" rx="3" fill="#008CEF"/>
+              <text class="node-lbl" x="508" y="380" text-anchor="middle">Bateria</text>
+              <text class="node-val" id="tBatt" x="508" y="400" text-anchor="middle" fill="#7CC4FF">50%</text>
             </g>
             <!-- rede -->
             <g>
-              <path d="M640 250 L640 150 M620 165 L660 165 M625 185 L655 185 M630 150 L640 130 L650 150" stroke="#9AA8BF" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <text class="node-lbl" x="700" y="200" text-anchor="middle">Rede</text>
-              <text class="node-val" id="tGrid" x="700" y="220" text-anchor="middle" fill="#FFB020">—</text>
+              <path d="M700 356 L700 160 M680 176 L720 176 M685 196 L715 196 M690 160 L700 140 L710 160" stroke="#9AA8BF" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <text class="node-lbl" x="750" y="226" text-anchor="middle">Rede</text>
+              <text class="node-val" id="tGrid" x="750" y="248" text-anchor="middle" fill="#FFB020">—</text>
             </g>
+            <!-- fio da casa por cima do cômodo -->
+            <path class="flowline" id="fHouse" stroke="#FFC21A" d="M405 284 L 345 284 L 345 236 L 280 236 L 280 246"/>
           </svg>
         </div>
         <div class="lab-ui">
@@ -612,7 +620,7 @@ function drawDay(){
   const t = (h - 6) / 12, day = h > 6 && h < 18;
   const x = 60 + 680 * Math.min(1, Math.max(0, t)), y = 300 - 4 * 170 * Math.min(1,Math.max(0,t)) * (1 - Math.min(1,Math.max(0,t)));
   sunEl.setAttribute('transform', `translate(${x} ${y})`); sunEl.style.opacity = day ? 1 : 0;
-  const mt = ((h + 6) % 24) / 12; moonEl.setAttribute('transform', `translate(${60 + 680 * Math.min(1, mt)} ${300 - 4 * 170 * Math.min(1,mt) * (1 - Math.min(1,mt))})`);
+  const mt = Math.min(1, ((h + 6) % 24) / 12); moonEl.setAttribute('transform', `translate(${80 + 560 * mt} ${190 - 4 * 120 * mt * (1 - mt)})`);
   moonEl.style.opacity = day ? 0 : 1; starsEl.style.opacity = day ? 0 : .8;
   const light = prodAt(h);
   sky.setAttribute('fill', `rgb(${Math.round(5 + 6*light)},${Math.round(15 + 45*light)},${Math.round(36 + 90*light)})`);
@@ -622,23 +630,28 @@ function drawDay(){
   setFlow('fBatt', r.toBatt, r.toBatt < 0);
   setFlow('fGrid', r.toGrid, r.toGrid < 0);
   $('fGrid').setAttribute('stroke', r.toGrid >= 0 ? '#FFC21A' : '#FF7A59');
-  $('fHouse').setAttribute('stroke', r.p >= r.l ? '#FFC21A' : '#7CC4FF');
+  const src = r.p >= r.l - .05 ? 'sol' : (r.toBatt < -.05 ? 'bateria' : 'rede');
+  $('fHouse').setAttribute('stroke', {sol:'#FFC21A', bateria:'#3AA8FF', rede:'#FF7A59'}[src]);
   $('tPanel').textContent = nf(r.p) + ' kW';
   $('tHouse').textContent = nf(r.l) + ' kW';
   $('tGrid').textContent = Math.abs(r.toGrid) < .05 ? '—' : (r.toGrid > 0 ? '+' : '−') + nf(Math.abs(r.toGrid)) + ' kW';
   $('tGrid').setAttribute('fill', r.toGrid > 0 ? '#FFC21A' : '#FF7A59');
   $('battG').style.opacity = hasBatt.checked ? 1 : .25;
   const pct = hasBatt.checked ? r.soc / CONFIG.bateriaKwh : 0;
-  $('battFill').setAttribute('width', Math.max(0, 50 * pct)); $('tBatt').textContent = hasBatt.checked ? Math.round(pct*100) + '%' : 'desligada';
-  $('bulb').style.opacity = .5 + Math.min(.5, r.l / 4);
+  $('battFill').setAttribute('width', Math.max(0, 56 * pct)); $('tBatt').textContent = hasBatt.checked ? Math.round(pct*100) + '%' : 'desligada';
+  // luz da casa: acende quando escurece
+  const dark = light < .12;
+  $('lampGlow').setAttribute('opacity', dark ? 1 : 0);
+  $('bulb').setAttribute('fill', dark ? '#FFF3B0' : '#3A4A66');
+  $('room').setAttribute('fill', dark ? '#2A2410' : `rgb(${Math.round(20+30*light)},${Math.round(40+50*light)},${Math.round(70+60*light)})`);
   $('sGen').textContent = nf(r.gen) + ' kWh'; $('sCred').textContent = nf(r.cred) + ' kWh';
   // narrativa
   let s;
   if (r.p > r.l && r.toBatt > .05) s = `<b>Sol forte:</b> os painéis abastecem a casa e carregam a bateria.`;
   else if (r.p > r.l) s = `<b>Sobrando energia:</b> a casa usa o que precisa e o excedente vira <b>crédito</b> na rede.`;
   else if (r.p > .05) s = `<b>Pouco sol:</b> os painéis ajudam e o restante vem ${hasBatt.checked && r.toBatt < -.05 ? 'da bateria' : 'dos seus créditos na rede'}.`;
-  else if (hasBatt.checked && r.toBatt < -.05) s = `<b>Noite:</b> a casa usa a energia guardada na <b>bateria</b>.`;
-  else s = `<b>Noite:</b> a casa usa os <b>créditos</b> gerados durante o dia.`;
+  else if (hasBatt.checked && r.toBatt < -.05) s = `<b>Noite:</b> a energia sai da <b>bateria</b>, passa pelo inversor e acende a luz da casa.`;
+  else s = `<b>Noite:</b> a casa acende a luz usando os <b>créditos</b> gerados durante o dia.`;
   $('story').innerHTML = s;
 }
 hour.addEventListener('input', () => { stop(); drawDay(); });
@@ -665,7 +678,7 @@ const svgScene = scene.querySelector('svg');
 const fitScene = () => {
   const m = innerWidth < 640;
   svgScene.setAttribute('viewBox', m ? '0 70 800 360' : '0 0 800 430');
-  $('tPanel').setAttribute('y', m ? 104 : 112); $('tBatt').setAttribute('y', m ? 400 : 396);
+  $('tPanel').setAttribute('y', m ? 104 : 112); $('tBatt').setAttribute('y', m ? 404 : 400);
 };
 addEventListener('resize', fitScene); fitScene();
 calc();
