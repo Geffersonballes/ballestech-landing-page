@@ -3,3 +3,6 @@
   Require all denied
 </FilesMatch>
 RedirectMatch 404 /\.git
+
+# Pasta interna (skill) não deve ser publicada
+RedirectMatch 404 /\.claude
