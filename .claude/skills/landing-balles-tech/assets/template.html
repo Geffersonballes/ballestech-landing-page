@@ -274,7 +274,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
         <h1 class="rv" style="--d:80ms">Sua conta de luz pode cair <em>até 95%</em>.</h1>
         <p class="lead rv" style="--d:160ms">Projeto, homologação, instalação e suporte. Você só acompanha a economia chegar.</p>
         <div class="proof rv" style="--d:240ms">
-          <div><b>+300</b><span>projetos instalados</span></div>
+          <div><b>+300</b><span>projetos realizados</span></div>
           <div><b>3 a 5 anos</b><span>retorno médio</span></div>
           <div><b>25 anos</b><span>de garantia de produção</span></div>
         </div>
@@ -295,8 +295,8 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
           <div class="res-main"><span>Economia estimada por ano</span><b id="yearOut">R$ 8.256</b></div>
           <div class="res-grid">
             <div><b id="monthOut">R$ 688</b><span>a menos por mês</span></div>
-            <div><b id="kwpOut">6,4 kWp</b><span>sistema</span></div>
-            <div><b id="panelsOut">12</b><span>painéis</span></div>
+            <div><b id="kwpOut">5,4 kWp</b><span>sistema</span></div>
+            <div><b id="panelsOut">10</b><span>painéis</span></div>
           </div>
           <a class="btn btn-volt" id="simCta" href="#"><svg><use href="#i-wa"/></svg>Quero minha proposta</a>
           <p class="disclaimer">Estimativa com a irradiação média de MT e a Lei 14.300. O valor exato sai na visita técnica, gratuita e sem compromisso.</p>
@@ -532,7 +532,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 /* ===== CONFIGURAÇÃO: troque aqui ===== */
 const CONFIG = {
   whatsapp: "556596401269",   // DDI + DDD + número, só dígitos
-  tarifa: 1.00,               // R$/kWh médio com impostos
+  tarifa: 1.19,             // R$/kWh médio com impostos
   economia: 0.86,             // fração média da conta economizada
   geracaoPorKwp: 125,         // kWh/mês por kWp em MT
   painelW: 580,
@@ -557,7 +557,7 @@ document.querySelectorAll('.rv').forEach(el => io.observe(el));
 const brl = n => n.toLocaleString('pt-BR', {style:'currency', currency:'BRL', maximumFractionDigits:0});
 const nf = (n, d=1) => n.toLocaleString('pt-BR', {maximumFractionDigits:d});
 const bill = $('bill');
-let SYS = {kwp:6.4, kwhDay:800/30, tipo:'Residencial'};   // = calc() com o valor inicial (R$ 800); calc() roda no fim e recalcula
+let SYS = {kwp:800/1.19/125, kwhDay:800/1.19/30, tipo:'Residencial'};   // = calc() com o valor inicial (R$ 800, tarifa 1,19, 125 kWh/kWp ≈ 5,4 kWp); calc() roda no fim e recalcula
 function calc(){
   const v = +bill.value;
   bill.style.setProperty('--p', (v - bill.min) / (bill.max - bill.min) * 100 + '%');
