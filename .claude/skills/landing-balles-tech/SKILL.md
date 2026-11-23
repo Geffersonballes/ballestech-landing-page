@@ -92,7 +92,7 @@ A página deve continuar **curta**: ~5.300 px de altura no celular (375 px). Aci
 
 ## Pendências
 
-- [ ] Dono aprovar a versão atual (branch de desenvolvimento) para passar à `main`.
+- [x] Dono aprovou a versão atual; ela está na `main` (23/11/2026).
 - [ ] Dono contratar o plano **Premium** da Hostinger; depois: criar o site, ligar Git com implantação automática da `main`, trocar o registro A do domínio para o IP do plano, SSL e HTTPS.
 - [ ] Depoimentos reais de clientes (seção removida até existirem).
 - [ ] Confirmar os números (+300 projetos, 3 a 5 anos, 25 anos) e o WhatsApp (65) 9640-1269.
@@ -146,3 +146,4 @@ Para uma página focada (ex.: produtor rural, bateria contra queda de luz): copi
 | 2026-11-19 | Criada a skill `landing-balles-tech` com template, imagens e scripts de prévia/verificação. |
 | 2026-11-23 | Vídeo do "Virality Predictor" avaliado e descartado para a landing. |
 | 2026-11-23 | Projeto organizado para trabalhar com 4 subagentes; adotada a REGRA DE OURO (toda instrução que muda a página é registrada aqui no mesmo commit). |
+| 2026-11-23 | Dono aprovou a página atual (fundo claro, diagrama com luz e bateria); tudo passou para a `main`, inclusive skill, CLAUDE.md e subagentes. |
