@@ -154,3 +154,4 @@ Para uma página focada (ex.: produtor rural, bateria contra queda de luz): copi
 | 2026-11-23 | Dono confirmou "mais de 300 projetos realizados" (topo diz "projetos realizados") e a tarifa local de R$ 1,19/kWh na `CONFIG`; com R$ 800 o simulador passa a mostrar 5,4 kWp e 10 painéis. |
 | 2026-11-23 | Retorno médio confirmado pelo dono: 1,5 a 2,4 anos (topo e FAQ; antes 3 a 5 anos). Diagrama mantido como está, mesmo gerando mais que o consumo num dia de sol (créditos sobrando): decisão do dono. |
 | 2026-11-23 | WhatsApp corrigido para (65) 99640-1269 (`5565996401269`): o número antigo da página estava sem o 9 do celular. |
+| 2026-11-23 | Dono aprovou tarifa R$ 1,19, +300 projetos realizados, retorno de 1,5 a 2,4 anos e WhatsApp (65) 99640-1269; passaram para a `main`. |
