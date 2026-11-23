@@ -1,90 +1,148 @@
 ---
 name: landing-balles-tech
-description: 'Cria, edita e publica landing pages da Balles Tech Energia (energia solar em Sapezal/MT) no padrão aprovado pelo dono — paleta da marca em fundo claro, simulador de economia no topo, diagrama interativo "um dia na sua casa", fotos reais de obras e tudo levando ao WhatsApp. Use sempre que o pedido envolver o site ballestech.com.br, a landing page da Balles Tech, uma página de campanha de energia solar da empresa (residencial, rural, comercial, bateria, manutenção), mudar textos, cores, seções, simulador ou animação dessa página, gerar prévia para aprovação ou publicar na Hostinger — mesmo que o usuário não diga "skill" nem "landing page" (ex.: "muda o título do site da Balles", "faz uma página só para produtor rural", "coloca financiamento no site").'
+description: 'Padrão, regras e fluxo da landing page da Balles Tech Energia (energia solar em Sapezal/MT, ballestech.com.br), repositório geffersonballes/ballestech-landing-page. Use em QUALQUER pedido que mude visual, texto, estrutura, simulador, diagrama, cores, seções, fotos, contatos ou publicação desta página — inclusive pedidos curtos como "muda o título do site da Balles", "tira essa seção", "coloca financiamento", "publica o site" — e também para criar páginas de campanha da Balles Tech (rural, bateria, comercial) a partir do mesmo padrão.'
 ---
 
 # Landing page Balles Tech
 
-Esta skill guarda o padrão construído e aprovado com o dono da Balles Tech. O objetivo de toda página é **gerar conversa no WhatsApp com um lead qualificado** (que já sabe o valor da conta de luz e o tipo de imóvel). Tudo o que não ajuda nisso sai da página.
+Página de captação da **Balles Tech Energia**: energia solar fotovoltaica para casas, comércios, indústrias e propriedades rurais em **Sapezal/MT e região**. O objetivo é um só: **o visitante abrir o WhatsApp já sabendo o valor da conta de luz e o tipo de imóvel** (lead qualificado). Não há venda online nem preço fixo: a venda é por orçamento.
 
-O ponto de partida é sempre `assets/template.html` (cópia da versão aprovada). Para a página principal, edite o `index.html` do repositório; para uma página nova de campanha, copie o template e adapte.
+- Arquivo da página: `index.html` na raiz (HTML + CSS + JS num arquivo só, sem build). Imagens em `img/` (webp).
+- Repositório: `geffersonballes/ballestech-landing-page`. A branch `main` é a que vai ao ar; o trabalho é feito numa branch de desenvolvimento e passa para a `main` quando o dono aprova a prévia.
+- Publicação: **Hostinger** em https://ballestech.com.br (plano Premium do dono, ligado ao GitHub com implantação automática da `main`). Enquanto o plano não estiver ativo, o domínio ainda aponta para o site antigo da agência Winner (HostGator, `162.241.61.38`).
+- Modelo pronto: `assets/template.html` + `assets/img/`. Detalhes do diagrama: `references/diagrama.md`. Scripts: `scripts/gerar_previa.py` (prévia em HTML único) e `scripts/verificar.js` (prints e checagens).
 
-## Fatos da empresa (use estes, não invente outros)
+## REGRA DE OURO
 
-- Nome: **Balles Tech Energia** — energia solar fotovoltaica.
-- Local: Rua 3 de Junho, 1740SW, Quadra 136, Lote 10B, Sala 01A – Jardim Ipê, Sapezal/MT, CEP 78365-000. Atende Sapezal e região.
-- WhatsApp/telefone: (65) 9640-1269 → `556596401269`. Instagram: @ballestecnologia.
-- Números já usados no site antigo e mantidos: **+300 projetos instalados**, **retorno médio de 3 a 5 anos**, **até 25 anos de garantia nos painéis**, economia de **até 95%**.
-- Serviços: residencial, comercial, rural/agronegócio, industrial, sistemas com bateria, manutenção/limpeza.
-- Fotos reais de obras: `img/projeto1.webp` … `img/projeto11.webp`. Logos: `img/logo-colorida.webp` (fundo claro), `img/logo-branca.webp` (fundo escuro), `img/favicon.png`. Estão no repositório e também em `assets/img/` desta skill (copie a pasta `img/` junto com o template ao criar uma página nova fora do repositório).
+**Toda instrução do usuário que mude a página é registrada nesta skill, na mesma alteração e no mesmo commit.** Se a instrução contradiz uma regra daqui, a regra nova substitui a antiga (apague a antiga, não deixe as duas) e entra no **Registro de decisões** com a data. A skill tem que descrever a página como ela está no repositório — se alguém abrir só a skill, deve entender a página sem ler o código.
 
-Se um pedido exigir um dado que não está aqui (financiamento, prazos, marcas de painel, depoimentos, novos números), **pergunte ao usuário** em vez de inventar. Depoimentos só entram se forem reais — com nome e cidade fornecidos por ele. Um depoimento falso, quando o cliente percebe, derruba a confiança na página inteira.
+## Identidade visual
 
-## Direção visual aprovada
+**Direção:** página clara, limpa e confiável, com um toque de energia em movimento (faixas de luz animadas). Azul da marca transmite confiança; amarelo-sol é reservado para a ação (WhatsApp). Referência de estilo: vídeo enviado pelo dono com luz fluindo, cards interativos e controle deslizante com brilho — adaptado às cores da marca.
 
-| Papel | Valor | Uso |
+**Tokens CSS** (`:root` do `index.html`):
+
+| Token | Cor | Uso |
 |---|---|---|
-| Fundo | `#F6F9FE` (claro), seções alternadas `#EAF1FB` | página toda |
-| Texto | `#0B1A36`, secundário `#4A5B78` | |
-| Azul-marinho | `#00297D` / `#061A45` | cartão do simulador, rodapé, botões secundários |
-| Azul da logo | `#008CEF` | bateria, faixas de luz, detalhes |
-| Azul de texto | `#0062C9` | palavras em destaque (`<em>` nos títulos), eyebrows, ícones |
-| Amarelo-sol | `#FFC21A` (hover `#FFCD3F`), texto do botão `#1A1300` | **só** botões de ação, controle do simulador e números de economia |
-| Coral | `#FF7A59` | energia puxada da rede no diagrama |
+| `--bg` | `#F6F9FE` | fundo da página |
+| `--bg-2` | `#EAF1FB` | faixa da seção do diagrama |
+| `--card` / `--card-2` | `#FFFFFF` / `#F1F5FB` | cartões, caixas de status |
+| `--line` / `--line-2` | azul-marinho 10% / 18% | bordas |
+| `--ink` | `#0B1A36` | texto principal |
+| `--muted` / `--dim` | `#4A5B78` / `#6B7A93` | texto secundário / legendas |
+| `--navy` / `--navy-2` | `#00297D` / `#061A45` | cartão do simulador, rodapé, botão ▶, botões de seta |
+| `--accent-text` | `#0062C9` | `<em>` dos títulos, eyebrows, ícones, "+" do FAQ |
+| `--blue` | `#008CEF` (azul da logo) | bateria, faixas de luz, foco, chave ligada |
+| `--volt` | `#FFC21A` (amarelo-sol), hover `#FFCD3F`, texto `--volt-ink` `#1A1300` | **só** botões de ação, controle do simulador, números de economia, sol/energia no diagrama |
+| coral | `#FF7A59` | energia puxada da rede no diagrama |
 
-Por que o amarelo não vai em texto sobre fundo claro: não tem contraste suficiente para leitura. Ele é a cor da ação — se aparecer em tudo, o botão de WhatsApp deixa de chamar atenção.
+O amarelo **nunca** vai em texto sobre fundo claro (contraste ruim) e não é espalhado: se tudo for amarelo, o botão do WhatsApp deixa de chamar atenção.
 
-- Fontes: **Sora** (títulos, 600–800) + **Inter** (texto). Títulos com uma parte em `<em>` itálico azul.
-- Elemento-assinatura: **faixas de luz animadas** (SVG `.beams`) no topo e na chamada final, inspiradas no vídeo de referência do dono (luz em movimento = energia).
-- Cantos arredondados (12–28px), sombras suaves azuladas, muito respiro. Mobile first: tudo precisa funcionar em 375px.
-- O dono já testou e rejeitou: verde-limão neon (fugia da marca). Também já existiu versão escura; a atual aprovada é a **clara**.
+**Tipografia:** Sora 600–800 (títulos; parte do título em `<em>` itálico 500 azul) + Inter 400–600 (texto). Google Fonts.
 
-## Estrutura da página (nesta ordem)
+**Marca:** `img/logo-colorida.webp` no topo (fundo claro), `img/logo-branca.webp` no rodapé (fundo azul-marinho), `img/favicon.png`. Fotos: **somente fotos reais de obras** (`img/projeto1..11.webp`). Nada de banco de imagens.
 
-1. **Topo**: selo "Energia solar em Sapezal e região – MT", título "Sua conta de luz pode cair *até 95%*.", subtítulo curto, 3 números de prova numa linha.
-2. **Simulador** (no próprio topo, cartão azul-marinho): controle de R$ 150 a R$ 20 mil, tipo de imóvel (Casa/Comércio/Rural/Indústria), resultado: economia por ano em destaque + por mês, kWp e nº de painéis, botão "Quero minha proposta" que abre o WhatsApp **com o valor e o tipo já escritos**, e o aviso de estimativa (irradiação de MT + Lei 14.300, visita técnica gratuita). A calculadora fica acima da dobra porque é o que mais gera contato.
-3. **"Um dia na sua casa com energia solar"** — diagrama interativo (detalhes em `references/diagrama.md`).
-4. **Como funciona** — 4 passos de uma linha cada.
-5. **Serviços** — 6 blocos curtos (ícone + nome + 1 linha), cada um abre o WhatsApp com mensagem própria.
-6. **Projetos** — carrossel de fotos reais (arrastar no celular, setas no desktop).
-7. **Dúvidas** — no máximo 4 perguntas (custo, retorno, conta zerada, noite/nublado).
-8. **Chamada final** — "Pare de pagar caro na *conta de luz*" + botão "Enviar minha conta de luz".
-9. **Rodapé** azul-marinho com contato e endereço + botão flutuante do WhatsApp.
+**Componentes:** botões em pílula (`.btn-volt` amarelo para ação; `.btn-ghost` branco); selo `.pill`; eyebrow com bolinha amarela; cartão do simulador azul-marinho com borda em degradê amarelo→azul; cards de serviço brancos; carrossel com scroll-snap; FAQ com `<details>`; rodapé azul-marinho; botão flutuante verde do WhatsApp.
 
-O dono pediu a página **curta e pouco cansativa**: no celular ela tem ~5.300px de altura. Antes de acrescentar uma seção, veja se dá para encaixar a informação numa existente; se a página passar de ~6.500px no celular, avise.
+**Interações que devem ser mantidas:**
+- Cabeçalho fixo que ganha fundo ao rolar.
+- Faixas de luz (SVG `.beams`) animadas no topo e na chamada final.
+- Elementos revelam ao rolar (`.rv` + IntersectionObserver).
+- **Simulador**: controle R$ 150–20.000, tipo de imóvel, resultado ao vivo, botão "Quero minha proposta" com WhatsApp pré-preenchido (valor + tipo).
+- **Diagrama "um dia na sua casa"**: hora do dia arrastável, ▶/⏸ que passa o dia (toca sozinho uma vez ao aparecer), chave de bateria, energia painéis → inversor → **dentro da casa**, à noite **a luz do cômodo acende** e, com bateria, a energia **sai da bateria → inversor → casa**; números usam o sistema do simulador. Ver `references/diagrama.md`.
+- Carrossel de projetos com setas.
+- Todos os botões de WhatsApp com `data-msg` própria.
+- `prefers-reduced-motion` desliga animações.
 
-## Regras de texto
+## Ordem das seções
 
-- Português do Brasil, frases curtas e concretas, sem adjetivos vazios ("solução inovadora de excelência").
-- Fale de economia e tranquilidade ("a burocracia é nossa"), não de tecnologia.
-- Nunca prometa "conta zerada": pela Lei 14.300 sobram taxa mínima, iluminação pública e parte da tarifa de rede. Use "até 95%".
-- Todo número de simulação vem acompanhado de "estimativa".
-- Cada botão de WhatsApp tem `data-msg` própria, para o atendimento saber de onde veio o lead.
+1. Cabeçalho (logo, menu: Simulador · Veja funcionando · Serviços · Projetos · Dúvidas, botão "Pedir orçamento").
+2. **Topo** (`.hero`): selo "Energia solar em Sapezal e região – MT", título "Sua conta de luz pode cair *até 95%*.", subtítulo, números (+300 projetos instalados · 3 a 5 anos retorno médio · até 25 anos de garantia) **e o simulador** (`#simulador`) ao lado (desktop) ou abaixo (celular).
+3. **Veja funcionando** (`#energia`): diagrama interativo.
+4. **Como funciona** (`#como-funciona`): 4 passos de 1 linha.
+5. **Serviços** (`#servicos`): 6 blocos (Residencial, Comercial, Rural, Industrial, Com bateria, Manutenção).
+6. **Projetos** (`#projetos`): carrossel com 6 fotos reais.
+7. **Dúvidas** (`#duvidas`): 4 perguntas.
+8. **Chamada final**: "Pare de pagar caro na *conta de luz*" + "Enviar minha conta de luz".
+9. Rodapé (contato, endereço) + WhatsApp flutuante.
 
-## Onde mudar o quê
+A página deve continuar **curta**: ~5.300 px de altura no celular (375 px). Acima de ~6.500 px, avise o dono antes.
 
-- **WhatsApp, tarifa, % de economia, geração por kWp, potência do painel, bateria**: constante `CONFIG` no fim do HTML. Mude ali, nunca espalhado pelo código.
-- **Cores**: variáveis no `:root` do `<style>`.
-- **Diagrama**: SVG `#scene` + funções `simulate()` e `drawDay()` — leia `references/diagrama.md` antes de mexer.
+## Conteúdo e regras de copy
 
-## Fluxo de trabalho
+**Promessa central:** reduzir a conta de luz em até 95% com energia solar, sem dor de cabeça — a Balles Tech cuida de projeto, homologação, instalação e suporte. "A burocracia é nossa."
 
-1. **Repositório**: `geffersonballes/ballestech-landing-page` (HTML estático, sem build). A branch `main` é a que vai ao ar. Trabalhe numa branch de desenvolvimento e faça commit + push nela.
-2. **Teste antes de mostrar**: sirva a pasta (`python3 -m http.server`) e use Playwright (já instalado) para tirar prints em 1366px e 375px. Confira: nenhum erro no console, sem rolagem horizontal (`scrollWidth` igual à largura), textos do diagrama legíveis no celular, simulador e diagrama respondendo. Olhe os prints — não confie só nos números.
-3. **Prévia para o dono**: gere um HTML único com as imagens embutidas e envie para ele abrir no app:
-   `python3 scripts/gerar_previa.py <pasta-do-site> <saida>.html` (sem dependências; ~550 KB).
-4. **Aprovação**: só passe para a `main` depois que o dono aprovar a prévia. Explique as mudanças em linguagem simples, sem jargão técnico.
-5. **Publicação (Hostinger)**: o domínio `ballestech.com.br` e o DNS ficam na conta Hostinger do dono. A publicação usa um plano de hospedagem dele ligado ao GitHub (Git com implantação automática da `main`). Antes de trocar o DNS, anote os valores antigos. **Nunca mexa nos registros de e-mail** (MX, SPF/TXT, DKIM `hostingermail-*`, `autodiscover`, `autoconfig`) nem nos subdomínios que não são do site (ex.: `naoerremais`, `docenciacriativa`). O arquivo `.htaccess` bloqueia `.md`/`.json` para que `README.md` e `CLAUDE.md` não fiquem públicos — mantenha-o.
+**Nunca prometer:**
+- "conta zerada" (pela Lei 14.300 sobram taxa mínima, iluminação pública e parte da tarifa de rede);
+- valor exato de economia ou preço sem visita técnica — todo número do simulador é "estimativa";
+- financiamento, prazos de instalação, marcas de equipamento ou condições que o dono não informou.
 
-## Regras de autonomia do dono
+**Nunca inventar** depoimentos, números, clientes, prêmios ou certificações. Dado faltando vira marcador visível `[PREENCHER: ...]` ou `[CONFIRMAR: ...]` e o dono é avisado. Depoimentos só com texto, nome e cidade fornecidos pelo dono.
 
-- **Reversível → faça direto**: editar a página, commit/push em branch, gerar prévia, criar site, publicar, ajustar DNS do site (anotando o valor antigo), instalar SSL.
-- **Irreversível → explique e espere um "sim"**: apagar site/arquivos/e-mails, resetar o DNS inteiro, cancelar ou alterar planos, force-push, apagar branches. **Compras e pagamentos sempre ficam com o dono.**
+**Estilo:** português do Brasil, frases curtas e concretas, foco em economia e tranquilidade (não em tecnologia), sem adjetivos vazios.
 
-## Páginas de campanha (variações)
+**Dados do negócio:**
+- Empresa: Balles Tech Energia — energia solar fotovoltaica. Atende Sapezal/MT e região.
+- Endereço: Rua 3 de Junho, 1740SW, Quadra 136, Lote 10B, Sala 01A – Jardim Ipê, Sapezal/MT, CEP 78365-000.
+- WhatsApp/telefone: (65) 9640-1269 → `556596401269` (constante `CONFIG.whatsapp`). Instagram: @ballestecnologia.
+- Números em uso (vieram do site anterior): +300 projetos instalados; retorno médio 3 a 5 anos; até 25 anos de garantia nos painéis; economia de até 95%.
+- Serviços: residencial, comercial, rural/agronegócio, industrial, sistemas com bateria, manutenção e limpeza.
+- Venda: **WhatsApp**, por orçamento (sem preço publicado). Visita técnica gratuita e sem compromisso.
+- Parâmetros do simulador (`CONFIG`): tarifa R$ 1,00/kWh, economia 86% da conta, 125 kWh/mês por kWp, painel 580 W, bateria 10 kWh.
 
-Para uma página focada (ex.: "energia solar para produtor rural", "bateria contra queda de luz"):
-- Copie `assets/template.html`, mantenha visual, simulador e diagrama.
-- Pré-selecione o tipo no simulador (ex.: `Rural` com `checked`) e, se fizer sentido, a chave de bateria ligada.
-- Troque título, subtítulo, fotos e `data-msg` dos botões para o tema (ex.: "Vim pela página de energia rural").
-- Corte o que não serve ao tema (ex.: serviços viram 3 blocos relevantes) — página de campanha deve ser ainda mais curta.
+## Pendências
+
+- [ ] Dono aprovar a versão atual (branch de desenvolvimento) para passar à `main`.
+- [ ] Dono contratar o plano **Premium** da Hostinger; depois: criar o site, ligar Git com implantação automática da `main`, trocar o registro A do domínio para o IP do plano, SSL e HTTPS.
+- [ ] Depoimentos reais de clientes (seção removida até existirem).
+- [ ] Confirmar os números (+300 projetos, 3 a 5 anos, 25 anos) e o WhatsApp (65) 9640-1269.
+- [ ] Tarifa atual da Energisa na região para ajustar `CONFIG.tarifa`.
+- [ ] Se houver financiamento/parcelamento: condições reais para incluir (a pesquisa indica que ajuda a converter).
+- [ ] Outros exemplos de landing pages de energia solar que o dono vai enviar para análise.
+
+## Fluxo de trabalho técnico
+
+1. **Editar** o `index.html` (e imagens em `img/`, sempre webp). Valores de negócio só na `CONFIG`; cores só nos tokens.
+2. **Testar** servindo a pasta (`python3 -m http.server 8765`) e rodando `node .claude/skills/landing-balles-tech/scripts/verificar.js http://localhost:8765/ <pasta-no-scratchpad>`: prints em 375 px e 1280/1366 px, diagrama em 3 horários. Precisa dar **zero erros no console** e **scrollWidth = largura** nas duas larguras. **Olhe os prints.** Arquivos de teste ficam no scratchpad, nunca no repositório.
+3. **Atualizar esta skill** (conteúdo que mudou + linha no Registro de decisões) e, se o padrão mudou, o `assets/template.html`.
+4. **Prévia para o dono**: `python3 .claude/skills/landing-balles-tech/scripts/gerar_previa.py . <saida>.html` e enviar o arquivo.
+5. **Commit em português** com página e skill juntas, **push** na branch de desenvolvimento. Passar para a `main` só com aprovação do dono.
+6. **Conferir no ar** (depois que a `main` estiver ligada à Hostinger): `curl -s https://ballestech.com.br/ | grep -o "<title>[^<]*"` e um texto que mudou, a cada 15 s por até 3 min. **Se não publicar:** a sessão principal confere pelo conector Hostinger a implantação Git do site (status, último deploy, forçar nova implantação) e limpa o cache; se ainda falhar, relata ao dono. O domínio ainda servir o site antigo (React da Winner) significa que o DNS não foi trocado — não é falha de deploy.
+
+**DNS (Hostinger):** só a sessão principal mexe, e só no registro do site (A `@`), anotando o valor antigo. **Nunca** tocar em MX, TXT (SPF, verificações Google), DKIM `hostingermail-*`, `autodiscover`, `autoconfig`, `_dmarc`, nem nos subdomínios `naoerremais` e `docenciacriativa` (outros projetos). O `.htaccess` bloqueia `.md`, `.json`, `.git` e `.claude` — mantenha.
+
+**Autonomia (regra do dono):** reversível → faça direto. Irreversível (apagar site/arquivos/e-mails, resetar DNS inteiro, cancelar/alterar planos, force-push, apagar branch) → explique e espere um "sim". **Compras e pagamentos sempre ficam com o dono.**
+
+## Equipe de subagentes
+
+Definidos em `.claude/agents/`:
+- `copywriter-balles-tech` — textos da página.
+- `designer-interacoes` — visual, layout, animações e celular.
+- `conteudo-balles-tech` — lê materiais (PDF, áudio, vídeo, Drive) e extrai dados.
+- `qa-publicacao` — testa, faz commit/push e confere no ar quando pedido.
+
+Regras de orquestração estão no `CLAUDE.md` da raiz.
+
+## Páginas de campanha
+
+Para uma página focada (ex.: produtor rural, bateria contra queda de luz): copie `assets/template.html` e `assets/img/`, mantenha visual, simulador e diagrama, pré-selecione o tipo no simulador (e a bateria, se for o tema), troque título, fotos e `data-msg` ("Vim pela página de energia rural") e corte o que não serve ao tema.
+
+## Registro de decisões
+
+| Data | Decisão |
+|---|---|
+| 2026-11-18 | Substituir o site em React da agência Winner por uma landing estática própria, versionada no GitHub e publicada pela Hostinger do dono. |
+| 2026-11-18 | Removido do DNS o IP `2.57.91.91` (página padrão da Hostinger, sem SSL); o domínio aponta só para `162.241.61.38` (site atual) até a troca para o plano próprio. |
+| 2026-11-18 | Hospedagem: o dono vai contratar o plano Premium da Hostinger (caminho 1); a página não depende mais da Winner. |
+| 2026-11-18 | Simulador de economia com WhatsApp pré-preenchido (valor da conta + tipo de imóvel). |
+| 2026-11-18 | Só fotos reais de obras; depoimentos com foto de banco de imagens foram removidos; depoimentos só reais. |
+| 2026-11-18 | Página encurtada (~10.800 → ~5.300 px no celular): saíram "Por que a Balles Tech" e depoimentos; serviços em blocos curtos; projetos em carrossel; FAQ com 4 perguntas. |
+| 2026-11-18 | Simulador movido para o topo (acima da dobra). |
+| 2026-11-18 | Criado o diagrama interativo "um dia na sua casa", inspirado no vídeo de referência do dono. |
+| 2026-11-18 | Verde-limão neon rejeitado: usar a paleta da marca (azul-marinho, azul da logo, amarelo-sol). |
+| 2026-11-18 | Fundo claro adotado (a versão escura foi substituída). |
+| 2026-11-18 | Diagrama: energia sai do inversor para dentro da casa; à noite a luz acende e, com bateria, a energia sai da bateria → inversor → casa. |
+| 2026-11-18 | Autonomia: reversível faz direto; irreversível pede "sim"; compras ficam com o dono. |
+| 2026-11-19 | Criada a skill `landing-balles-tech` com template, imagens e scripts de prévia/verificação. |
+| 2026-11-23 | Vídeo do "Virality Predictor" avaliado e descartado para a landing. |
+| 2026-11-23 | Projeto organizado para trabalhar com 4 subagentes; adotada a REGRA DE OURO (toda instrução que muda a página é registrada aqui no mesmo commit). |
