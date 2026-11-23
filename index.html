@@ -292,11 +292,11 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
           <label><input type="radio" name="tipo" value="Industrial"><span>Indústria</span></label>
         </div>
         <div class="res" aria-live="polite">
-          <div class="res-main"><span>Economia estimada por ano</span><b id="yearOut">R$ 8.300</b></div>
+          <div class="res-main"><span>Economia estimada por ano</span><b id="yearOut">R$ 8.256</b></div>
           <div class="res-grid">
-            <div><b id="monthOut">R$ 690</b><span>a menos por mês</span></div>
-            <div><b id="kwpOut">5,6 kWp</b><span>sistema</span></div>
-            <div><b id="panelsOut">10</b><span>painéis</span></div>
+            <div><b id="monthOut">R$ 688</b><span>a menos por mês</span></div>
+            <div><b id="kwpOut">6,4 kWp</b><span>sistema</span></div>
+            <div><b id="panelsOut">12</b><span>painéis</span></div>
           </div>
           <a class="btn btn-volt" id="simCta" href="#"><svg><use href="#i-wa"/></svg>Quero minha proposta</a>
           <p class="disclaimer">Estimativa com a irradiação média de MT e a Lei 14.300. O valor exato sai na visita técnica, gratuita e sem compromisso.</p>
@@ -364,10 +364,10 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
               <rect x="232" y="228" width="98" height="84" rx="6" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
               <circle id="bulb" cx="280" cy="252" r="6" fill="#3A4A66"/>
               <rect x="348" y="300" width="28" height="56" rx="3" fill="#0B1322"/>
-              <text class="node-lbl" x="300" y="128" text-anchor="middle">Painéis</text>
-              <text class="node-val" id="tPanel" x="300" y="112" text-anchor="middle" fill="#FFC21A">0 kW</text>
-              <text class="node-lbl" x="128" y="288" text-anchor="middle">Sua casa</text>
-              <text class="node-val" id="tHouse" x="128" y="310" text-anchor="middle" fill="#fff">0 kW</text>
+              <text class="node-lbl" x="220" y="128" text-anchor="middle">Painéis</text>
+              <text class="node-val" id="tPanel" x="220" y="112" text-anchor="middle" fill="#FFC21A">0 kW</text>
+              <text class="node-lbl" x="140" y="324" text-anchor="middle">Sua casa</text>
+              <text class="node-val" id="tHouse" x="140" y="346" text-anchor="middle" fill="#fff">0 kW</text>
             </g>
             <!-- inversor -->
             <g>
@@ -386,8 +386,8 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
             <!-- rede -->
             <g>
               <path d="M700 356 L700 160 M680 176 L720 176 M685 196 L715 196 M690 160 L700 140 L710 160" stroke="#9AA8BF" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <text class="node-lbl" x="750" y="226" text-anchor="middle">Rede</text>
-              <text class="node-val" id="tGrid" x="750" y="248" text-anchor="middle" fill="#FFB020">—</text>
+              <text class="node-lbl" x="700" y="380" text-anchor="middle">Rede</text>
+              <text class="node-val" id="tGrid" x="700" y="400" text-anchor="middle" fill="#FFB020">—</text>
             </g>
             <!-- fio da casa por cima do cômodo -->
             <path class="flowline" id="fHouse" stroke="#FFC21A" d="M405 284 L 345 284 L 345 236 L 280 236 L 280 246"/>
@@ -557,7 +557,7 @@ document.querySelectorAll('.rv').forEach(el => io.observe(el));
 const brl = n => n.toLocaleString('pt-BR', {style:'currency', currency:'BRL', maximumFractionDigits:0});
 const nf = (n, d=1) => n.toLocaleString('pt-BR', {maximumFractionDigits:d});
 const bill = $('bill');
-let SYS = {kwp:5.6, kwhDay:26};
+let SYS = {kwp:6.4, kwhDay:800/30, tipo:'Residencial'};   // = calc() com o valor inicial (R$ 800); calc() roda no fim e recalcula
 function calc(){
   const v = +bill.value;
   bill.style.setProperty('--p', (v - bill.min) / (bill.max - bill.min) * 100 + '%');
@@ -620,7 +620,7 @@ function drawDay(){
   const t = (h - 6) / 12, day = h > 6 && h < 18;
   const x = 60 + 680 * Math.min(1, Math.max(0, t)), y = 300 - 4 * 170 * Math.min(1,Math.max(0,t)) * (1 - Math.min(1,Math.max(0,t)));
   sunEl.setAttribute('transform', `translate(${x} ${y})`); sunEl.style.opacity = day ? 1 : 0;
-  const mt = Math.min(1, ((h + 6) % 24) / 12); moonEl.setAttribute('transform', `translate(${80 + 560 * mt} ${190 - 4 * 120 * mt * (1 - mt)})`);
+  const mt = Math.min(1, ((h + 6) % 24) / 12); moonEl.setAttribute('transform', `translate(${420 + 360 * mt} ${150 - 4 * 65 * mt * (1 - mt)})`);
   moonEl.style.opacity = day ? 0 : 1; starsEl.style.opacity = day ? 0 : .8;
   const light = prodAt(h);
   sky.setAttribute('fill', `rgb(${Math.round(5 + 6*light)},${Math.round(15 + 45*light)},${Math.round(36 + 90*light)})`);
@@ -678,7 +678,7 @@ const svgScene = scene.querySelector('svg');
 const fitScene = () => {
   const m = innerWidth < 640;
   svgScene.setAttribute('viewBox', m ? '0 70 800 360' : '0 0 800 430');
-  $('tPanel').setAttribute('y', m ? 104 : 112); $('tBatt').setAttribute('y', m ? 404 : 400);
+  $('tPanel').setAttribute('y', m ? 104 : 112); $('tBatt').setAttribute('y', m ? 404 : 400); $('tGrid').setAttribute('y', m ? 404 : 400);
 };
 addEventListener('resize', fitScene); fitScene();
 calc();

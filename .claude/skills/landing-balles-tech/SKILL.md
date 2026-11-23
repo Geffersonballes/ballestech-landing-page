@@ -147,3 +147,4 @@ Para uma página focada (ex.: produtor rural, bateria contra queda de luz): copi
 | 2026-11-23 | Vídeo do "Virality Predictor" avaliado e descartado para a landing. |
 | 2026-11-23 | Projeto organizado para trabalhar com 4 subagentes; adotada a REGRA DE OURO (toda instrução que muda a página é registrada aqui no mesmo commit). |
 | 2026-11-23 | Dono aprovou a página atual (fundo claro, diagrama com luz e bateria); tudo passou para a `main`, inclusive skill, CLAUDE.md e subagentes. |
+| 2026-11-23 | Correções do teste, pedidas pelo dono: no diagrama, o sol e a lua não passam mais sobre nenhum texto (rótulos "Painéis", "Sua casa" e "Rede" mudaram de lugar; lua na metade direita do céu); números de reserva do simulador iguais ao cálculo de R$ 800 (R$ 8.256/ano, R$ 688/mês, 6,4 kWp, 12 painéis). |
