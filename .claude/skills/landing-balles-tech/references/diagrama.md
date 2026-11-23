@@ -42,3 +42,6 @@ Fluxos são `<path class="flowline">` com traço tracejado animado; `setFlow(id,
 Em telas < 640px, `fitScene()` recorta o viewBox (`0 70 800 360`), ajusta o `y` dos valores da bateria e da rede (`tGrid`) e o CSS aumenta `.node-lbl`/`.node-val`, senão os textos ficam ilegíveis.
 
 **Posição dos rótulos (para o sol e a lua nunca cobrirem texto):** o arco do sol não muda; os rótulos é que ficam fora dele. "Painéis" em x 220 (acima do telhado, à esquerda), "Sua casa" em x 140 / y 324–346 (à esquerda da casa, perto do chão), "Rede" em x 700 / y 380–400 (no chão, embaixo do poste, como a "Bateria"). Regra: o centro do sol fica a pelo menos 22 unidades de qualquer texto, em qualquer horário, em 375 e 1280 px. Depois de qualquer mudança no SVG, tire print em 375px nos horários 13:00 (sem bateria), 11:00 (com bateria) e 20:00 (com bateria) e confira se nada se sobrepõe.
+
+
+**Decisão do dono (23/11/2026):** num dia de sol o diagrama gera mais do que a casa consome (sobram créditos no fim do dia). Fica assim — não "corrigir" para igualar ao consumo.
