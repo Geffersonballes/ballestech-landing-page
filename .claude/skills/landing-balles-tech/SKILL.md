@@ -84,7 +84,7 @@ A página deve continuar **curta**: ~5.300 px de altura no celular (375 px). Aci
 **Dados do negócio:**
 - Empresa: Balles Tech Energia — energia solar fotovoltaica. Atende Sapezal/MT e região.
 - Endereço: Rua 3 de Junho, 1740SW, Quadra 136, Lote 10B, Sala 01A – Jardim Ipê, Sapezal/MT, CEP 78365-000.
-- WhatsApp/telefone: (65) 9640-1269 → `556596401269` (constante `CONFIG.whatsapp`). Instagram: @ballestecnologia.
+- WhatsApp/telefone: (65) 99640-1269 → `5565996401269` (confirmado pelo dono em 23/11/2026) (constante `CONFIG.whatsapp`). Instagram: @ballestecnologia.
 - Números em uso: +300 projetos realizados (confirmado pelo dono em 23/11/2026); retorno médio de 1,5 a 2,4 anos (confirmado pelo dono em 23/11/2026); economia de até 95%.
 - **Garantia (confirmada pelo dono em 23/11/2026):** 25 anos é a **garantia de produção** (desempenho) dos painéis. A garantia do produto varia por fabricante e se consulta no datasheet de cada um — não publicar um número único. Não prometer vida útil ("duram mais de 25 anos").
 - Serviços: residencial, comercial, rural/agronegócio, industrial, sistemas com bateria, manutenção e limpeza.
@@ -96,7 +96,7 @@ A página deve continuar **curta**: ~5.300 px de altura no celular (375 px). Aci
 - [x] Dono aprovou a versão atual; ela está na `main` (23/11/2026).
 - [ ] Dono contratar o plano **Premium** da Hostinger; depois: criar o site, ligar Git com implantação automática da `main`, trocar o registro A do domínio para o IP do plano, SSL e HTTPS.
 - [ ] Depoimentos reais de clientes (seção removida até existirem).
-- [ ] Confirmar o WhatsApp (65) 9640-1269. (+300 projetos realizados, retorno de 1,5 a 2,4 anos e 25 anos de garantia de produção: confirmados.)
+- [x] Números e WhatsApp confirmados pelo dono: +300 projetos realizados, retorno de 1,5 a 2,4 anos, 25 anos de garantia de produção, (65) 99640-1269.
 - [x] Tarifa da concessionária local: R$ 1,19/kWh (`CONFIG.tarifa`).
 - [ ] Se houver financiamento/parcelamento: condições reais para incluir (a pesquisa indica que ajuda a converter).
 - [ ] Outros exemplos de landing pages de energia solar que o dono vai enviar para análise.
@@ -153,3 +153,4 @@ Para uma página focada (ex.: produtor rural, bateria contra queda de luz): copi
 | 2026-11-23 | Dono aprovou as correções (diagrama, simulador, garantia); passaram para a `main`. |
 | 2026-11-23 | Dono confirmou "mais de 300 projetos realizados" (topo diz "projetos realizados") e a tarifa local de R$ 1,19/kWh na `CONFIG`; com R$ 800 o simulador passa a mostrar 5,4 kWp e 10 painéis. |
 | 2026-11-23 | Retorno médio confirmado pelo dono: 1,5 a 2,4 anos (topo e FAQ; antes 3 a 5 anos). Diagrama mantido como está, mesmo gerando mais que o consumo num dia de sol (créditos sobrando): decisão do dono. |
+| 2026-11-23 | WhatsApp corrigido para (65) 99640-1269 (`5565996401269`): o número antigo da página estava sem o 9 do celular. |

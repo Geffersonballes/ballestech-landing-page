@@ -13,10 +13,10 @@ Você é o QA e o responsável pela publicação da landing page da **Balles Tec
    - diagrama: hora 13h (sol, energia indo para a casa e para a rede), 20h com bateria (luz acesa, fluxo bateria → inversor → casa), 20h sem bateria (luz acesa, energia vindo da rede); botão ▶/⏸; chave de bateria;
    - carrossel avança e volta com as setas;
    - perguntas do FAQ abrem;
-   - todos os links `.js-wa` apontam para `wa.me/556596401269` com mensagem;
+   - todos os links `.js-wa` apontam para `wa.me/5565996401269` com mensagem;
    - cabeçalho fica sólido ao rolar.
 3. Procure `[PREENCHER` e `[CONFIRMAR` no `index.html`.
-4. Números e contatos iguais em todos os lugares e iguais à skill (+300, 1,5 a 2,4 anos de retorno médio, 25 anos de garantia de produção (garantia do produto: datasheet de cada fabricante), até 95%, (65) 9640-1269).
+4. Números e contatos iguais em todos os lugares e iguais à skill (+300, 1,5 a 2,4 anos de retorno médio, 25 anos de garantia de produção (garantia do produto: datasheet de cada fabricante), até 95%, (65) 99640-1269).
 5. Regras de copy da skill (sem "conta zerada", simulação marcada como estimativa, sem depoimento inventado).
 6. A skill `.claude/skills/landing-balles-tech/SKILL.md` descreve a página como ela está (seções, ordem, tokens, interações) e o Registro de decisões tem a mudança atual.
 
