@@ -57,7 +57,7 @@ O amarelo **nunca** vai em texto sobre fundo claro (contraste ruim) e não é es
 ## Ordem das seções
 
 1. Cabeçalho (logo, menu: Simulador · Veja funcionando · Serviços · Projetos · Dúvidas, botão "Pedir orçamento").
-2. **Topo** (`.hero`): selo "Energia solar em Sapezal e região – MT", título "Sua conta de luz pode cair *até 95%*.", subtítulo, números (+300 projetos instalados · 3 a 5 anos retorno médio · até 25 anos de garantia) **e o simulador** (`#simulador`) ao lado (desktop) ou abaixo (celular).
+2. **Topo** (`.hero`): selo "Energia solar em Sapezal e região – MT", título "Sua conta de luz pode cair *até 95%*.", subtítulo, números (+300 projetos instalados · 3 a 5 anos retorno médio · 25 anos de garantia de produção) **e o simulador** (`#simulador`) ao lado (desktop) ou abaixo (celular).
 3. **Veja funcionando** (`#energia`): diagrama interativo.
 4. **Como funciona** (`#como-funciona`): 4 passos de 1 linha.
 5. **Serviços** (`#servicos`): 6 blocos (Residencial, Comercial, Rural, Industrial, Com bateria, Manutenção).
@@ -85,7 +85,8 @@ A página deve continuar **curta**: ~5.300 px de altura no celular (375 px). Aci
 - Empresa: Balles Tech Energia — energia solar fotovoltaica. Atende Sapezal/MT e região.
 - Endereço: Rua 3 de Junho, 1740SW, Quadra 136, Lote 10B, Sala 01A – Jardim Ipê, Sapezal/MT, CEP 78365-000.
 - WhatsApp/telefone: (65) 9640-1269 → `556596401269` (constante `CONFIG.whatsapp`). Instagram: @ballestecnologia.
-- Números em uso (vieram do site anterior): +300 projetos instalados; retorno médio 3 a 5 anos; até 25 anos de garantia nos painéis; economia de até 95%.
+- Números em uso (vieram do site anterior): +300 projetos instalados; retorno médio 3 a 5 anos; economia de até 95%.
+- **Garantia (confirmada pelo dono em 23/11/2026):** 25 anos é a **garantia de produção** (desempenho) dos painéis. A garantia do produto varia por fabricante e se consulta no datasheet de cada um — não publicar um número único. Não prometer vida útil ("duram mais de 25 anos").
 - Serviços: residencial, comercial, rural/agronegócio, industrial, sistemas com bateria, manutenção e limpeza.
 - Venda: **WhatsApp**, por orçamento (sem preço publicado). Visita técnica gratuita e sem compromisso.
 - Parâmetros do simulador (`CONFIG`): tarifa R$ 1,00/kWh, economia 86% da conta, 125 kWh/mês por kWp, painel 580 W, bateria 10 kWh.
@@ -95,7 +96,7 @@ A página deve continuar **curta**: ~5.300 px de altura no celular (375 px). Aci
 - [x] Dono aprovou a versão atual; ela está na `main` (23/11/2026).
 - [ ] Dono contratar o plano **Premium** da Hostinger; depois: criar o site, ligar Git com implantação automática da `main`, trocar o registro A do domínio para o IP do plano, SSL e HTTPS.
 - [ ] Depoimentos reais de clientes (seção removida até existirem).
-- [ ] Confirmar os números (+300 projetos, 3 a 5 anos, 25 anos) e o WhatsApp (65) 9640-1269.
+- [ ] Confirmar os números (+300 projetos, 3 a 5 anos) e o WhatsApp (65) 9640-1269. (25 anos de garantia de produção: confirmado.)
 - [ ] Tarifa atual da Energisa na região para ajustar `CONFIG.tarifa`.
 - [ ] Se houver financiamento/parcelamento: condições reais para incluir (a pesquisa indica que ajuda a converter).
 - [ ] Outros exemplos de landing pages de energia solar que o dono vai enviar para análise.
@@ -148,3 +149,4 @@ Para uma página focada (ex.: produtor rural, bateria contra queda de luz): copi
 | 2026-11-23 | Projeto organizado para trabalhar com 4 subagentes; adotada a REGRA DE OURO (toda instrução que muda a página é registrada aqui no mesmo commit). |
 | 2026-11-23 | Dono aprovou a página atual (fundo claro, diagrama com luz e bateria); tudo passou para a `main`, inclusive skill, CLAUDE.md e subagentes. |
 | 2026-11-23 | Correções do teste, pedidas pelo dono: no diagrama, o sol e a lua não passam mais sobre nenhum texto (rótulos "Painéis", "Sua casa" e "Rede" mudaram de lugar; lua na metade direita do céu); números de reserva do simulador iguais ao cálculo de R$ 800 (R$ 8.256/ano, R$ 688/mês, 6,4 kWp, 12 painéis). |
+| 2026-11-23 | Garantia: "até 25 anos de garantia" virou "25 anos de garantia de produção" (topo e FAQ). Garantia do produto varia por fabricante (datasheet); vida útil não é prometida. |
